@@ -10,7 +10,7 @@ from torch.nn.init import xavier_normal_
 from torch_geometric.utils.num_nodes import maybe_num_nodes
 from torch_scatter import scatter_add, scatter_max
 
-DATASET_NAMES = frozenset(["wd50", "wd50_33", "wd50_66", "wd50_100"])
+DATASET_NAMES = frozenset(["wd50", "wd50_33", "wd50_66", "wd50_100", "NarrativeInductiveDataset"])
 PADDING = '__padding__'
 logger = logging.getLogger(__name__)
 
@@ -99,7 +99,7 @@ def _download_if_necessary(
             dest_path=str(file_path),
             overwrite=force,
             unzip=unzip,
-            showsize=True,
+            #showsize=True,
         )
     return file_path
 

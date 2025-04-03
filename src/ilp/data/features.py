@@ -122,6 +122,63 @@ class Dataset:
 
 
 @dataclass
+class LocalDataset(Dataset):
+    """ A dataset class that assumes data is:
+    - already locally available,
+    - stored in ~/.data/ilp/{dataset-name},
+    - (semi-)inductive ."""
+    #name: str
+    features_index = ""
+    features_emb = ""
+    inductive_statements = ""
+    transductive_statements = ""
+    def get_path(
+        self,
+        split: str,
+        part: str,
+        version: Optional[str] = None,
+        force: bool = False
+    ) -> pathlib.Path:
+        """
+        Get path to the file with statements.
+
+        :param split:
+            The dataset split. From {"inductive"}.
+        :param part:
+            The part. From {"train", "inference", "validation", "test"}
+        :param version:
+            The dataset version. Only effective for inductive split.
+        :param force:
+            Whether to enforce re-downloading (not used, always False).
+        """
+        cache_root = resolve_cache_root(self.name)
+        if split == "inductive":
+            if not cache_root.joinpath("inductive", "statements", version).exists():
+                raise ValueError(f"Dataset version is {version} but is not in the data folder {cache_root.joinpath('inductive', 'statements')}")
+            # verify part and extract file name
+            inductive_file_names = dict(
+                train="transductive_train.txt",
+                inference="inductive_train.txt",
+                validation="inductive_val.txt",
+                test="inductive_ts.txt",
+            )
+            if part not in inductive_file_names:
+                raise ValueError(f"Invalid part: {part}. Allowed are: {sorted(inductive_file_names.keys())}")
+            file_name = inductive_file_names[part]
+
+            path = cache_root.joinpath("inductive", "statements", version, file_name)
+            if not path.exists():
+                raise FileNotFoundError(f"Local file not found: {path}. Please ensure data is properly placed.")
+            return path
+
+        raise ValueError(f"Unknown split: {split}")
+
+@dataclass
+class NarrativeInductiveDataset(LocalDataset):
+    """ Narrative inductive datasets """
+    name = "NarrativeInductiveDataset"
+
+@dataclass
 class WD50(Dataset):
     """The original dataset."""
     name = "wd50"
@@ -180,7 +237,7 @@ def download_statements(
             dest_path=str(zip_file_path),
             overwrite=force,
             unzip=True,
-            showsize=True,
+            #showsize=True,
         )
 
     # TODO: Why?
