@@ -5,6 +5,6 @@ pip install pykeen==1.6.0
 pip install .
 pip install googledrivedownloader==0.2
 # comment out "showsize=True" in files using `GoogleDriveDownloader` packages
-if [ -d "/mnt/disk2/ines/miniconda3/envs/hyper_relational_ilp/lib/python3.10/site-packages/ilp" ]; then
-    rm -r /mnt/disk2/ines/miniconda3/envs/hyper_relational_ilp/lib/python3.10/site-packages/ilp
+if [ -d "~/miniconda3/envs/hyper_relational_ilp/lib/python3.10/site-packages/ilp" ]; then
+    rm -r ~/miniconda3/envs/hyper_relational_ilp/lib/python3.10/site-packages/ilp
 fi 

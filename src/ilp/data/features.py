@@ -152,7 +152,7 @@ class LocalDataset(Dataset):
             Whether to enforce re-downloading (not used, always False).
         """
         cache_root = resolve_cache_root(self.name)
-        if split == "inductive":
+        if split in ["inductive", "semi_inductive"]:
             if not cache_root.joinpath("inductive", "statements", version).exists():
                 raise ValueError(f"Dataset version is {version} but is not in the data folder {cache_root.joinpath('inductive', 'statements')}")
             # verify part and extract file name
@@ -172,6 +172,7 @@ class LocalDataset(Dataset):
             return path
 
         raise ValueError(f"Unknown split: {split}")
+
 
 @dataclass
 class NarrativeInductiveDataset(LocalDataset):

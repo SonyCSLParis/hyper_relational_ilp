@@ -38,7 +38,7 @@ option_dataset = click.option(
 option_dataset_version = click.option(
     "-dv",
     "--dataset-version",
-    type=click.Choice([V1, V2], case_sensitive=False),
+    #type=click.Choice([V1, V2], case_sensitive=False),
     default=V1,
 )
 
