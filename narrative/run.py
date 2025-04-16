@@ -79,7 +79,8 @@ def parse_args():
 
 
 def cp_results_file(ftc_p, cf_p):
-    command = f"cp {ftc_p} {cf_p}"
+    command = f'cp "{ftc_p}" "{cf_p}"'
+    print(command)
     subprocess.run(command, shell=True, check=False)
 
 def prep_temp_dir(temp_dir, env, version):
@@ -146,7 +147,9 @@ def main():
 
                         subprocess.run(command, shell=True, check=False, env=env)
                         logger.info(f"Finished running {command}, saving to {fp}")
-                        cp_results_file(sorted(os.listdir(os.path.join(temp_dir, "pykeen/logs")))[-1], fp)
+                        fn = sorted(os.listdir(os.path.join(temp_dir, "pykeen/logs")))[-1]
+                        ftc_p = os.path.join(temp_dir, "pykeen/logs", fn)
+                        cp_results_file(ftc_p, fp)
                         logger.info(f"Copied results to {fp}")
                         subprocess.run(f"rm -rf {temp_dir}", shell=True, check=False, env=env)
                     else:
