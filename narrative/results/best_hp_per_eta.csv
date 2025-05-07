@@ -1,0 +1,5 @@
+,prop,subevent,role,causation,lr,embedding_dim,batch_size,exp_count,method,td,syntax
+11,1.0,0.0,0.0,1.0,0.0005,160.0,192.0,48,ILP,simple-triple+text+hr-triple,hyper_relational_rdf_star
+43,0.0,1.0,0.0,1.0,0.0001,224.0,192.0,48,ILP,simple-triple+text+hr-triple,hyper_relational_rdf_star
+92,0.0,0.0,0.0,1.0,0.0005,160.0,256.0,48,ILP,simple-triple+text+hr-triple,hyper_relational_rdf_star
+113,1.0,1.0,0.0,1.0,0.0005,160.0,192.0,48,ILP,simple-triple+text+hr-triple,hyper_relational_rdf_star

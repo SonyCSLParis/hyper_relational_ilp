@@ -1,12 +1,13 @@
 # From Symbols to Numbers: Measuring the Impact of Narrative Complexity on Embeddings
 
-We use this method to investigate how narrative semantic and syntactic levels impact embedding performance. For ILP, we are more particularly interested in textual description and hyper-relational, RDF-star like statements.
+We use this method to investigate how narrative semantic and syntactic levels impact embedding performance. For ILP, wec are more particularly interested in textual description and hyper-relational, RDF-star like statements.
 
 Forked from the [original repository](https://github.com/mali-git/hyper_relational_ilp)
 
 Main changes to the core code:
 * Enabling to run the method on local datasets (rather than using google downloads)= `src/ilp/data/features.py`
 * (Fixed bug with google download)
+* `install.sh`: additional bash script to install the dependencies
 
 All the content related to the narrative analysis is in the `narrative` folder:
 * `analyse_best_config.py`: analyse config from the `best_configs` folder to narrow down the search space
