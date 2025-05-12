@@ -1,4 +1,4 @@
-# From Symbols to Numbers: Measuring the Impact of Narrative Complexity on Embeddings
+# Measuring the Impact of Narrative Complexity on Knowledge Graph Embeddings
 
 We use this method to investigate how narrative semantic and syntactic levels impact embedding performance. For ILP, wec are more particularly interested in textual description and hyper-relational, RDF-star like statements.
 
